@@ -8,3 +8,11 @@
 一、内置Emmet
 * 快捷键： Tab
 
+二、默认支持 Markdown 文件
+* 快捷键： ctrl+shift+v, 唤出 md 文件预览
+
+三、默认集合git提交以及终端模式
+![Alt](image/technology/vscode_ui.png)
+* 左侧集合实时跟踪git变化
+* 下侧集合终端shell以及调试区
+
