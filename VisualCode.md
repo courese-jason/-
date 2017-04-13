@@ -16,3 +16,8 @@
 * 左侧集合实时跟踪git变化
 * 下侧集合终端shell以及调试区
 
+四、支持html语法
+
+实例：`<div><img src="image/technology/vscode_ui.png" height="40px" width="80px" /></div>`
+    <div><img src="image/technology/vscode_ui.png" height="40px" width="80px" /></div>
+

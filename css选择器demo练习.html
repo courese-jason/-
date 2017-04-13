@@ -6,26 +6,143 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        * { margin: 0 auto; }
-        #body { color: #000; font-size: 16px; }
-        .main { font-size: 1em; }
-        p { color: aquamarine; }
-        .main p { font-size: 50px; }
+        span { background-color: #fff; }
+        div > span {
+            background-color: #f00;
+        }
+
+        /*:after*/
+        .exciting-text::after {
+        content: "<- 让人兴兴兴奋!"; 
+        color: green;
+        }
+        .boring-text::after {
+        content:    "<- 无聊!";
+        color:      red;
+        }
+
+        .ribbon {
+        background-color: #5BC8F7;
+        }
+        .ribbon::after {
+        content: "Look at this orange box.";
+        background-color: #FFBA10;
+        border-color: black;
+        border-style: dotted;
+        }
+
+        span[data-descr] {
+        position: relative;
+        text-decoration: underline;
+        color: #00F;
+        cursor: help;
+        }
+        span[data-descr]:hover::after {
+        content: attr(data-descr);
+        position: absolute;
+        left: 0;
+        top: 24px;
+        min-width: 200px;
+        border: 1px #aaaaaa solid;
+        border-radius: 10px;
+        background-color: #ffffcc;
+        padding: 12px;
+        color: #000000;
+        font-size: 14px;
+        z-index: 1;
+        }
+
+        /*::before*/
+        .ribbon2 {
+        background-color: #5BC8F7;
+        }
+        .ribbon2::before {
+        content:          "Look at this orange box.";
+        background-color: #FFBA10;
+        border-color:     black;
+        border-style:     dotted;
+        }
+
+        li {
+        list-style-type: none;
+        position: relative;
+        margin: 2px;
+        padding: 0.5em 0.5em 0.5em 2em;
+        background: lightgrey;
+        font-family: sans-serif;
+        }
+        li.done {
+        background: #CCFF99;
+        }
+        li.done::before {
+        content: '';
+        position: absolute;
+        border-color: #009933;
+        border-style: solid;
+        border-width: 0 0.3em 0.25em 0;
+        height: 1em;
+        top: 1.3em;
+        left: 0.6em;
+        margin-top: -1em;
+        transform: rotate(45deg);
+        width: 0.5em;
+        } 
+
     </style>
+    <script>
+        // ::before
+        var list = document.getElementsByTagName('ul');
+        list.addEventListener('click', function(ev) {
+        if( ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('done'); 
+        }
+        }, false);
+
+
+    </script>
 </head>
 <body>
-    <div id="body">
-        <div class="main">
-            <p>
-                <span>
-                    hello css!
-                </span>
-            </p>
+    <div>
+        <span>Span 1. In the div.
+            <span>Span 2. In the span that's in the div.</span>
+        </span>
+        <p><span>this is test</span></p>
+        <span>thshasdisd</span>
+    </div>
+    <p>asdfasdf</p>
+    <span>Span 3. Not in a div<span>this is detstat</span> at all</span>
+
+    <div style="margin-top:50px;">
+        <p>::after 伪元素</p>
+        <div style="margin-left:20px;">
+            <p class="boring-text">这是些无聊的文字</p>
+            <p>这是不无聊也不有趣的文字</p>
+            <p class="exciting-text">在MDN上做贡献简单又轻松。
+            按右上角的编辑按钮添加新示例或改进旧示例！</p>
+
+            <span class="ribbon">Notice where the orange box is.</span>
+
+            <p>这是上面代码的实现<br />
+            我们有一些 <span data-descr="collection of words and punctuation">文字</span> 有一些
+            <span data-descr="small popups which also hide again">提示</span>。<br />
+            把鼠标放上去<span data-descr="not to be taken literally">看看</span>.
+            </p>            
         </div>
     </div>
-    <div id="footer">
-        
 
-    </div>
+    <div style="margin-top:50px;">
+        <p>::before 伪元素</p>
+        <div style="margin-left:20px;">
+            <span class="ribbon2">Notice where the orange box is.</span>           
+            <!--<ul>
+            <li>Buy milk</li>
+            <li>Take the dog for a walk</li>
+            <li>Exercise</li>
+            <li>Write code</li>
+            <li>Play music</li>
+            <li>Relax</li>
+            </ul>            -->
+        </div>
+    </div>    
 </body>
 </html>
